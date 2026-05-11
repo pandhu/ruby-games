@@ -19,7 +19,7 @@ Deliver the multi-sensory feedback and pre-literate accessibility that make ever
 - Every prompt and every correct answer is narrated by Ruby's voice.
 - Numerals, shape names, comparison words, and pattern colours are spoken with a consistent voice across the game.
 - Narration uses simple, repeatable phrasing ("One… two… three! Three apples!").
-- v1: pre-recorded human VO, English only.
+- v1: pre-recorded human VO in **Bahasa Indonesia**.
 
 ### 7.2 Sound Effects
 - Distinct, gentle SFX for: tap, drag, drop, level complete, garden grow.
@@ -51,7 +51,7 @@ Deliver the multi-sensory feedback and pre-literate accessibility that make ever
 ## Out of Scope (v1)
 
 - Multiple voice/character options.
-- Localisation beyond English.
+- Localisation beyond Bahasa Indonesia (English is planned post-v1).
 - Screen-reader integration (the target user cannot read).
 
 ## Acceptance

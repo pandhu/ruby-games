@@ -93,9 +93,18 @@ From research §6:
 
 ---
 
-## 8. Open Questions
+## 8. Localisation
+
+- **Default language:** Bahasa Indonesia (`id`).
+- All UI labels, spoken narration, and helper text must be in Bahasa Indonesia.
+- String literals should be kept in a single locale file (`src/locales/id.json`) from day one so future languages can be added without touching component code.
+- English (`en`) is a planned post-v1 locale; do not hard-code any English strings.
+
+---
+
+## 9. Open Questions
 
 - Single-child vs multi-profile per device for v1?
 - Native app shell or PWA only?
 - Voice-over: recorded human VO vs TTS for v1?
-- Localisation scope — English only at launch?
+- ~~Localisation scope — English only at launch?~~ **Resolved:** Default language is **Bahasa Indonesia**. English localisation is stretch/post-v1.
