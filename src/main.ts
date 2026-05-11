@@ -9,8 +9,8 @@ const LEVELS = [
 ] as const;
 
 const WORDS = [
-  'one','two','three','four','five',
-  'six','seven','eight','nine','ten',
+  'satu','dua','tiga','empat','lima',
+  'enam','tujuh','delapan','sembilan','sepuluh',
 ] as const;
 
 // ── State ──────────────────────────────────────────────────────────────────
@@ -24,6 +24,7 @@ function speak(text: string, rate = 0.9): void {
   if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'id-ID';
   u.rate = rate;
   u.pitch = 1.15;
   window.speechSynthesis.speak(u);
@@ -126,7 +127,7 @@ function buildLevel(idx: number): void {
     dots.appendChild(dot);
   });
 
-  const prompt = 'Tap each flower to water it!';
+  const prompt = 'Ketuk setiap bunga untuk menyiramnya!';
   showBubble(prompt);
   setTimeout(() => speak(prompt, 0.85), 500);
 }
@@ -178,7 +179,7 @@ function completeLevel(): void {
 
   // Cardinality reinforcement: "Three flowers! Well done!"
   const word = WORDS[count - 1];
-  const msg = `${word.charAt(0).toUpperCase()}${word.slice(1)} flower${count > 1 ? 's' : ''}! Well done!`;
+  const msg = `${word.charAt(0).toUpperCase()}${word.slice(1)} bunga! Bagus sekali!`;
   setTimeout(() => {
     showBubble(msg);
     speak(msg, 0.8);
@@ -223,7 +224,7 @@ function spawnConfetti(): void {
 function showEndScreen(): void {
   $('game-screen').classList.add('hidden');
   $('end-screen').classList.remove('hidden');
-  speak("Amazing! You watered all of Ruby's flowers! The garden is beautiful!", 0.8);
+  speak("Luar biasa! Kamu sudah menyiram semua bunga Ruby! Kebunnya indah sekali!", 0.8);
 }
 
 // ── Start / restart ────────────────────────────────────────────────────────
@@ -245,7 +246,7 @@ function startGame(): void {
 // ── Init ───────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   $('start-btn').addEventListener('click', () => {
-    speak("Let's count some flowers!", 0.85);
+    speak("Ayo hitung bunga-bunganya!", 0.85);
     startGame();
   });
 
