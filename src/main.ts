@@ -9,7 +9,6 @@ function $<T extends HTMLElement>(id: string): T {
 }
 
 function showHome(): void {
-  window.speechSynthesis?.cancel();
   $('home-screen').classList.remove('hidden');
   $('ep1-wrapper').classList.add('hidden');
   $('ep2-wrapper').classList.add('hidden');
@@ -22,13 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initEp3(showHome);
 
   $('play-ep1').addEventListener('click', () => {
-    speak("Ayo hitung bunga!", 0.85);
     $('home-screen').classList.add('hidden');
     showEp1();
   });
 
   $('play-ep2').addEventListener('click', () => {
-    speak("Angka berapa ini?", 0.85);
     $('home-screen').classList.add('hidden');
     showEp2();
     startEp2();

@@ -1,4 +1,4 @@
-import { speak, spawnConfetti } from './utils';
+import { spawnConfetti } from './utils';
 
 const EP2_LEVELS = [
   { pool: [1, 2, 3],                        gap: 3 },
@@ -100,7 +100,7 @@ function handleBasketTap(card: HTMLElement, count: number): void {
       msg = `${word.charAt(0).toUpperCase()}${word.slice(1)}! ${countList}!`;
     }
 
-    setTimeout(() => { speak(msg, 0.8); ep2Bubble(msg); }, 150);
+    setTimeout(() => { ep2Bubble(msg); }, 150);
     setTimeout(() => { card.classList.remove('basket-correct'); nextRound(); }, 1800);
   } else {
     ep2Misses++;
@@ -129,7 +129,6 @@ function completeEp2Level(): void {
   spawnConfetti('ep2-confetti');
   const isLast = ep2Level >= EP2_LEVELS.length - 1;
   const msg = isLast ? 'Luar biasa! Kamu hafal semua angka!' : 'Bagus sekali! Level berikutnya!';
-  speak(msg, 0.8);
   ep2Bubble(msg);
 
   setTimeout(() => {
@@ -142,7 +141,6 @@ function completeEp2Level(): void {
     } else {
       $('ep2-game').classList.add('hidden');
       $('ep2-end').classList.remove('hidden');
-      speak("Luar biasa! Kamu bisa membaca semua angka! Kamu sangat pintar!", 0.8);
     }
   }, 2500);
 }
@@ -181,7 +179,7 @@ function startRound(): void {
 
   const word = NUMBER_WORDS[ep2Target];
   const spoken = `${word.charAt(0).toUpperCase()}${word.slice(1)}!`;
-  setTimeout(() => { speak(spoken, 0.85); ep2Bubble(spoken); }, 400);
+  setTimeout(() => { ep2Bubble(spoken); }, 400);
 }
 
 export function startEp2(): void {
@@ -204,7 +202,7 @@ export function showEp2(): void {
 export function initEp2(onGoHome: () => void): void {
   goHome = onGoHome;
 
-  $('ep2-home-btn').addEventListener('click', () => { window.speechSynthesis?.cancel(); goHome(); });
+  $('ep2-home-btn').addEventListener('click', () => { goHome(); });
   $('ep2-replay-btn').addEventListener('click', () => { localStorage.setItem('ep2level', '0'); startEp2(); });
-  $('ep2-home-end-btn').addEventListener('click', () => { window.speechSynthesis?.cancel(); goHome(); });
+  $('ep2-home-end-btn').addEventListener('click', () => { goHome(); });
 }
