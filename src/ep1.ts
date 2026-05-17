@@ -63,10 +63,17 @@ function buildFlower(id: number): HTMLElement {
   wrapper.appendChild(head);
   wrapper.appendChild(stem);
 
-  let touching = false;
-  wrapper.addEventListener('touchstart', () => { touching = true; }, { passive: true });
-  wrapper.addEventListener('touchend', (e) => { e.preventDefault(); handleTap(id); });
-  wrapper.addEventListener('click', () => { if (touching) { touching = false; return; } handleTap(id); });
+  // Enable drag-and-drop for the flower
+  wrapper.draggable = true;
+  wrapper.addEventListener('dragstart', (e) => {
+    e.dataTransfer?.setData('text/plain', String(id));
+  });
+  wrapper.addEventListener('dragover', (e) => { e.preventDefault(); });
+  wrapper.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const droppedId = Number(e.dataTransfer?.getData('text/plain'));
+    if (droppedId === id) handleTap(id);
+  });
 
   return wrapper;
 }
