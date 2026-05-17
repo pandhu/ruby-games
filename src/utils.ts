@@ -1,3 +1,13 @@
+export function speak(text: string, rate = 0.9): void {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'id-ID';
+  u.rate = rate;
+  u.pitch = 1.15;
+  window.speechSynthesis.speak(u);
+}
+
 export function spawnConfetti(containerId: string): void {
   const container = document.getElementById(containerId);
   if (!container) return;
