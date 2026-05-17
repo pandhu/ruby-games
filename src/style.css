@@ -788,20 +788,13 @@ body {
 }
 
 /* ══════════════════════════════
-<<<<<<< HEAD
    EPIC 3: SHAPE PATCH
 ══════════════════════════════ */
 #ep3-wrapper {
-=======
-   EPIC 4: COMPARE PATCH
-   ══════════════════════════════ */
-#ep4-wrapper {
->>>>>>> 627942d (Implement Epic 4: Compare Patch — quantity comparison game)
   height: 100dvh;
   position: relative;
 }
 
-<<<<<<< HEAD
 #ep3-game {
   display: flex;
   flex-direction: column;
@@ -957,9 +950,6 @@ body {
 
 /* ── End screen ── */
 #ep3-end {
-=======
-#ep4-start-screen {
->>>>>>> 627942d (Implement Epic 4: Compare Patch — quantity comparison game)
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -970,7 +960,6 @@ body {
   text-align: center;
 }
 
-<<<<<<< HEAD
 #ep3-end h2 {
   font-size: clamp(1.8rem, 7vw, 3rem);
   font-weight: 900;
@@ -979,7 +968,30 @@ body {
 }
 
 #ep3-end p {
-=======
+  font-size: clamp(1rem, 4vw, 1.3rem);
+  color: #558b2f;
+  font-weight: 600;
+}
+
+/* ══════════════════════════════
+   EPIC 4: COMPARE PATCH
+   ══════════════════════════════ */
+#ep4-wrapper {
+  height: 100dvh;
+  position: relative;
+}
+
+#ep4-start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100dvh;
+  padding: 24px;
+  text-align: center;
+}
+
 #ep4-start-screen h1 {
   font-size: clamp(2rem, 8vw, 3.5rem);
   font-weight: 900;
@@ -1186,7 +1198,6 @@ body {
 }
 
 #ep4-end-screen p {
->>>>>>> 627942d (Implement Epic 4: Compare Patch — quantity comparison game)
   font-size: clamp(1rem, 4vw, 1.3rem);
   color: #558b2f;
   font-weight: 600;
