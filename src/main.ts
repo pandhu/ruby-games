@@ -2,7 +2,6 @@ import './style.css';
 import { initEp1, showEp1 } from './ep1';
 import { initEp2, showEp2, startEp2 } from './ep2';
 import { initEp3, showEp3, startEp3 } from './ep3';
-import { speak } from './utils';
 
 function $<T extends HTMLElement>(id: string): T {
   return document.getElementById(id) as T;
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   $('play-ep3').addEventListener('click', () => {
-    speak("Ayo sortir bentuknya!", 0.85);
     $('home-screen').classList.add('hidden');
     showEp3();
     startEp3();

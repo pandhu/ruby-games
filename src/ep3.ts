@@ -1,4 +1,4 @@
-import { speak, spawnConfetti } from './utils';
+import { spawnConfetti } from './utils';
 
 type Shape = 'circle' | 'square' | 'triangle' | 'rectangle';
 
@@ -177,7 +177,7 @@ function setupLeafDrag(leaf: HTMLElement): void {
         leaf.style.opacity = '0';
 
         const msg = `${SHAPE_NAMES[leafShape]}! Bagus sekali!`;
-        setTimeout(() => { speak(msg, 0.8); ep3Bubble(msg); }, 100);
+        setTimeout(() => { ep3Bubble(msg); }, 100);
         setTimeout(() => {
           basket.classList.remove('ep3-basket-correct');
           ep3LeafIndex++;
@@ -213,7 +213,6 @@ function showNextLeaf(): void {
   area.appendChild(leaf);
 
   setTimeout(() => {
-    speak(`Ini ${SHAPE_NAMES[shape]}!`, 0.85);
     ep3Bubble(`Ini ${SHAPE_NAMES[shape]}!`);
   }, 300);
 
@@ -226,7 +225,6 @@ function completeLevelEp3(): void {
   spawnConfetti('ep3-confetti');
   const isLast = ep3Level >= EP3_LEVELS.length - 1;
   const msg = isLast ? 'Luar biasa! Kamu tahu semua bentuk!' : 'Bagus sekali! Level berikutnya!';
-  speak(msg, 0.8);
   ep3Bubble(msg);
 
   setTimeout(() => {
@@ -238,7 +236,6 @@ function completeLevelEp3(): void {
     } else {
       $('ep3-game').classList.add('hidden');
       $('ep3-end').classList.remove('hidden');
-      speak('Luar biasa! Kamu bisa mengenal semua bentuk! Kamu sangat pintar!', 0.8);
     }
   }, 2500);
 }
@@ -259,7 +256,6 @@ function narrateBaskets(): void {
   let i = 0;
   const next = () => {
     if (i >= shapes.length) return;
-    speak(SHAPE_NAMES[shapes[i]], 0.8);
     ep3Bubble(SHAPE_NAMES[shapes[i]]);
     i++;
     setTimeout(next, 1600);
