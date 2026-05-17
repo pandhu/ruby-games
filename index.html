@@ -4,51 +4,117 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#87CEEB">
-  <title>Kebun Hitung Ruby 🌸</title>
+  <title>Taman Matematika Ruby 🌸</title>
   <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
   <div id="app">
 
-    <!-- Start Screen -->
-    <div id="start-screen">
-      <div class="start-icon">🌸</div>
-      <h1>Kebun Hitung<br>Ruby</h1>
-      <p class="subtitle">Siram bunga-bunganya!</p>
-      <button id="start-btn" class="big-btn">Ayo Main! 🌱</button>
-      <div class="deco-flowers">🌺 🌼 🌻 🌹</div>
+    <!-- ══════════════════════════════
+         HOME / MENU
+    ══════════════════════════════ -->
+    <div id="home-screen">
+      <div class="home-ruby">🧒</div>
+      <h1 class="home-title">Taman<br>Matematika Ruby</h1>
+      <p class="home-sub">Pilih permainannya!</p>
+      <div class="game-cards">
+        <button class="game-card" id="play-ep1">
+          <span class="card-icon">🌺</span>
+          <span class="card-title">Kebun Hitung</span>
+          <span class="card-desc">Siram bunganya!</span>
+        </button>
+        <button class="game-card" id="play-ep2">
+          <span class="card-icon">🔢</span>
+          <span class="card-title">Angka &amp; Keranjang</span>
+          <span class="card-desc">Cocokkan angkanya!</span>
+        </button>
+      </div>
+      <div class="deco-flowers">🌸 🌼 🌻 🌹</div>
     </div>
 
-    <!-- Game Screen -->
-    <div id="game-screen" class="hidden">
-      <header id="game-header">
-        <div id="ruby-area">
-          <div id="ruby-char">🧒</div>
-          <div id="speech-bubble" class="hidden"></div>
+    <!-- ══════════════════════════════
+         EPIC 1: COUNTING PATCH
+    ══════════════════════════════ -->
+    <div id="ep1-wrapper" class="hidden">
+
+      <div id="ep1-start-screen">
+        <button class="ep1-home-btn home-btn">🏠 Menu</button>
+        <div class="start-icon">🌸</div>
+        <h1>Kebun Hitung Ruby</h1>
+        <p class="subtitle">Siram bunganya!</p>
+        <button id="ep1-start-btn" class="big-btn">Ayo Bermain! 🌱</button>
+        <div class="deco-flowers">🌺 🌼 🌻 🌹</div>
+      </div>
+
+      <div id="ep1-game-screen" class="hidden">
+        <header id="ep1-game-header">
+          <div id="ep1-ruby-area">
+            <div id="ep1-ruby-char">🧒</div>
+            <div id="ep1-bubble" class="hidden"></div>
+          </div>
+          <div id="ep1-level-indicator">Level <span id="ep1-level-num">1</span> dari 4</div>
+          <button class="ep1-home-btn home-btn-sm">🏠</button>
+        </header>
+        <main id="ep1-game-main">
+          <div id="flower-area"></div>
+        </main>
+        <footer id="ep1-game-footer">
+          <div id="ep1-progress-dots"></div>
+        </footer>
+      </div>
+
+      <div id="ep1-end-screen" class="hidden">
+        <div class="end-burst">🌸✨🌺✨🌼</div>
+        <h2>Hebat sekali! 🎉</h2>
+        <p>Semua bunga Ruby sudah disiram!</p>
+        <div class="end-ruby">🧒🌟</div>
+        <button id="ep1-play-again-btn" class="big-btn">Main Lagi! 🌱</button>
+        <button class="ep1-home-btn home-btn">🏠 Menu</button>
+      </div>
+
+      <div id="ep1-celebration"></div>
+    </div>
+
+    <!-- ══════════════════════════════
+         EPIC 2: NUMERAL PATCH
+    ══════════════════════════════ -->
+    <div id="ep2-wrapper" class="hidden">
+
+      <div id="ep2-game">
+        <header id="ep2-header">
+          <button id="ep2-home-btn" class="home-btn-sm">🏠</button>
+          <div id="ep2-ruby-area">
+            <div id="ep2-ruby">🧒</div>
+            <div id="ep2-bubble" class="hidden"></div>
+          </div>
+          <div id="ep2-level-badge">Level <span id="ep2-level-num">1</span> dari 4</div>
+        </header>
+
+        <div id="ep2-digit-area">
+          <div id="ep2-digit">?</div>
         </div>
-        <div id="level-indicator">Level <span id="level-num">1</span> dari 4</div>
-      </header>
 
-      <main id="game-main">
-        <div id="flower-area"></div>
-      </main>
+        <main id="ep2-main">
+          <div id="ep2-baskets"></div>
+        </main>
 
-      <footer id="game-footer">
-        <div id="progress-dots"></div>
-      </footer>
+        <footer id="ep2-footer">
+          <div id="ep2-dots"></div>
+          <div id="ep2-round-info">Soal <span id="ep2-round-num">1</span> dari 5</div>
+        </footer>
+      </div>
+
+      <div id="ep2-end" class="hidden">
+        <div class="end-burst">🔢✨🧺✨🍎</div>
+        <h2>Luar biasa! 🎉</h2>
+        <p>Kamu bisa mencocokkan semua angka!</p>
+        <div class="end-ruby">🧒🌟</div>
+        <button id="ep2-replay-btn" class="big-btn">Main Lagi! 🔢</button>
+        <button id="ep2-home-end-btn" class="home-btn">🏠 Menu</button>
+      </div>
+
+      <div id="ep2-confetti"></div>
     </div>
-
-    <!-- End Screen -->
-    <div id="end-screen" class="hidden">
-      <div class="end-burst">🌸✨🌺✨🌼</div>
-      <h2>Hebat sekali! 🎉</h2>
-      <p>Kamu sudah menyiram semua bunga Ruby!</p>
-      <div class="end-ruby">🧒🌟</div>
-      <button id="play-again-btn" class="big-btn">Main Lagi! 🌱</button>
-    </div>
-
-    <!-- Celebration overlay -->
-    <div id="celebration"></div>
 
   </div>
   <script type="module" src="/src/main.ts"></script>
