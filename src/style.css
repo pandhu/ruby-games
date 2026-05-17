@@ -253,7 +253,8 @@ body {
 
 /* Speech bubbles (shared style, different IDs) */
 #ep1-bubble,
-#ep2-bubble {
+#ep2-bubble,
+#ep3-bubble {
   position: relative;
   background: #fff;
   border-radius: 16px;
@@ -269,12 +270,14 @@ body {
   pointer-events: none;
 }
 #ep1-bubble.show,
-#ep2-bubble.show {
+#ep2-bubble.show,
+#ep3-bubble.show {
   opacity: 1;
   transform: scale(1) translateY(0);
 }
 #ep1-bubble::before,
-#ep2-bubble::before {
+#ep2-bubble::before,
+#ep3-bubble::before {
   content: '';
   position: absolute;
   left: -10px;
@@ -507,7 +510,8 @@ body {
    CONFETTI (shared)
 ══════════════════════════════ */
 #ep1-celebration,
-#ep2-confetti {
+#ep2-confetti,
+#ep3-confetti {
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -778,6 +782,192 @@ body {
 }
 
 #ep2-end p {
+  font-size: clamp(1rem, 4vw, 1.3rem);
+  color: #558b2f;
+  font-weight: 600;
+}
+
+/* ══════════════════════════════
+   EPIC 3: SHAPE PATCH
+══════════════════════════════ */
+#ep3-wrapper {
+  height: 100dvh;
+  position: relative;
+}
+
+#ep3-game {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+#ep3-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 8px;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+#ep3-ruby-area {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+}
+
+#ep3-ruby {
+  font-size: clamp(2rem, 8vw, 3rem);
+  animation: ruby-bounce 4s ease-in-out infinite;
+}
+
+#ep3-level-badge {
+  font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+  font-weight: 700;
+  color: #6a1b9a;
+  background: rgba(255,255,255,0.6);
+  border-radius: 20px;
+  padding: 6px 14px;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+}
+
+/* ── Leaf area ── */
+#ep3-leaf-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  overflow: visible;
+}
+
+.ep3-leaf {
+  cursor: grab;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  animation: ep3-float 2.2s ease-in-out infinite;
+  transform-origin: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.18));
+}
+
+.ep3-leaf.ep3-leaf-dragging {
+  cursor: grabbing;
+  animation: none;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.28));
+  z-index: 100;
+}
+
+@keyframes ep3-float {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50%       { transform: translateY(-12px) rotate(4deg); }
+}
+
+/* ── Show me bar ── */
+#ep3-show-me-bar {
+  display: flex;
+  justify-content: center;
+  padding: 4px 0 8px;
+  flex-shrink: 0;
+}
+
+/* ── Baskets area ── */
+#ep3-baskets-area {
+  flex-shrink: 0;
+  padding: 0 12px 4px;
+}
+
+#ep3-baskets {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.ep3-basket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.7);
+  border: 3px solid rgba(255,255,255,0.9);
+  border-radius: 18px;
+  padding: 10px 8px 8px;
+  min-width: 80px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+  user-select: none;
+}
+
+.ep3-basket.ep3-basket-over {
+  border-color: #7b1fa2;
+  box-shadow: 0 0 0 3px rgba(123,31,162,0.35), 0 6px 20px rgba(0,0,0,0.15);
+  transform: scale(1.06);
+}
+
+.ep3-basket.ep3-basket-correct {
+  border-color: #4caf50;
+  background: rgba(200,255,200,0.9);
+  animation: basket-correct-bounce 0.5s ease-out;
+}
+
+.ep3-basket-outline {
+  pointer-events: none;
+}
+
+.ep3-basket-label {
+  font-size: clamp(0.65rem, 2.5vw, 0.85rem);
+  font-weight: 700;
+  color: #2e7d32;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.ep3-basket-emoji {
+  font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+  line-height: 1;
+}
+
+/* ── Footer ── */
+#ep3-footer {
+  padding: 8px 12px 12px;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+#ep3-dots {
+  display: flex;
+  gap: 12px;
+}
+
+/* ── End screen ── */
+#ep3-end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100dvh;
+  padding: 24px;
+  text-align: center;
+}
+
+#ep3-end h2 {
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  font-weight: 900;
+  color: #6a1b9a;
+  text-shadow: 0 3px 0 rgba(0,0,0,0.1);
+}
+
+#ep3-end p {
   font-size: clamp(1rem, 4vw, 1.3rem);
   color: #558b2f;
   font-weight: 600;
