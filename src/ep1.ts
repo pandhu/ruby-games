@@ -1,4 +1,4 @@
-import { speak, spawnConfetti } from './utils';
+import { spawnConfetti } from './utils';
 
 const LEVELS = [
   { count: 3 },
@@ -91,7 +91,6 @@ function buildLevel(idx: number): void {
 
   const prompt = 'Sentuh setiap bunga untuk menyiramnya!';
   showBubble(prompt);
-  setTimeout(() => speak(prompt, 0.85), 500);
 }
 
 function handleTap(id: number): void {
@@ -115,7 +114,6 @@ function handleTap(id: number): void {
   badge.textContent = String(tapCount);
   setTimeout(() => badge.classList.add('visible'), 350);
 
-  speak(WORDS[tapCount - 1]);
 
   if (wateredIds.size === LEVELS[levelIndex].count) {
     transitioning = true;
@@ -131,7 +129,7 @@ function completeLevel(): void {
 
   const word = WORDS[count - 1];
   const msg = `${word.charAt(0).toUpperCase()}${word.slice(1)} bunga! Bagus sekali!`;
-  setTimeout(() => { showBubble(msg); speak(msg, 0.8); }, 300);
+  setTimeout(() => { showBubble(msg); }, 300);
 
   spawnConfetti('ep1-celebration');
 
@@ -145,7 +143,6 @@ function completeLevel(): void {
     } else {
       $('ep1-game-screen').classList.add('hidden');
       $('ep1-end-screen').classList.remove('hidden');
-      speak("Luar biasa! Kamu sudah menyiram semua bunga Ruby! Tamannya sangat indah!", 0.8);
     }
   }, 2500);
 }
@@ -174,7 +171,6 @@ export function initEp1(onGoHome: () => void): void {
   goHome = onGoHome;
 
   $('ep1-start-btn').addEventListener('click', () => {
-    speak("Ayo hitung bunga!", 0.85);
     startEp1Game();
   });
 
@@ -184,6 +180,6 @@ export function initEp1(onGoHome: () => void): void {
   });
 
   document.querySelectorAll<HTMLElement>('.ep1-home-btn').forEach(btn =>
-    btn.addEventListener('click', () => { window.speechSynthesis?.cancel(); goHome(); })
+    btn.addEventListener('click', () => { goHome(); })
   );
 }
